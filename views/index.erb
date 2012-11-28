@@ -1,0 +1,27 @@
+<h1>FileUploader</h1>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+</form>
+<hr />
+<div>
+    <a href="<%= @pathinfo.nil? ? "" : "http://#{@host}:#{@port}/files/#{@pathinfo}" %>">
+        <%= @pathinfo.nil? ? "" : "http://#{@host}:#{@port}/files/#{@pathinfo}" %>
+    </a>
+</div>
+<table class="twelve">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Path</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @files.each do |file| %>
+        <tr>
+            <td><%=file%></td>
+            <td><a href="http://<%=@host%>:<%=@port%>/files/<%=file%>">http://<%=@host%>:<%=@port%>/files/<%=file%></a></td>
+        </tr>
+    <% end%>
+</tbody>
+</table>
